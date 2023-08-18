@@ -2,27 +2,60 @@
 #
 # https://gqlgen.com/getting-started/
 
-type Todo {
-  id: ID!
-  text: String!
-  done: Boolean!
-  user: User!
-}
-
 type User {
+  username: String!
+  password: String!
+  isActive: Boolean!
+  roleId: ID!
+}
+
+type Role {
   id: ID!
-  name: String!
+  roleName: String!
+  description: String!
 }
 
-type Query {
-  todos: [Todo!]!
-}
-
-input NewTodo {
+input NewUserParam {
   text: String!
   userId: String!
 }
 
+input LoginParam {
+  username: String!
+  password: String!
+}
+
+type LoginResponse {
+  username: String!
+  isActive: String!
+}
+
+input CreateUserParam {
+  username: String!
+  password: String!
+  isActive: Boolean!
+  roleId: ID!
+}
+
+type CreateUserResponse {
+  username: String!
+  isActive: Boolean!
+  roleId: ID!
+}
+
+input CreateRoleParam {
+  roleName: String!
+  description: String!
+}
+
+type CreateRoleResponse {
+  id: ID!
+  roleName: String!
+  description: String!
+}
+
 type Mutation {
-  createTodo(input: NewTodo!): Todo!
+  createUser(input: CreateUserParam!): CreateUserResponse!
+  createRole(input: CreateRoleParam!): CreateRoleResponse!
+  login(input: LoginParam!): LoginResponse!
 }

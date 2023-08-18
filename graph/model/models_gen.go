@@ -2,19 +2,41 @@
 
 package model
 
-type NewTodo struct {
+type CreateRoleParam struct {
+	RoleName    string `json:"roleName"`
+	Description string `json:"description"`
+}
+
+type CreateRoleResponse struct {
+	ID          string `json:"id"`
+	RoleName    string `json:"roleName"`
+	Description string `json:"description"`
+}
+
+type CreateUserParam struct {
+	Username string `json:"username"`
+	Password string `json:"password"`
+	IsActive bool   `json:"isActive"`
+	RoleID   string `json:"roleId"`
+}
+
+type CreateUserResponse struct {
+	Username string `json:"username"`
+	IsActive bool   `json:"isActive"`
+	RoleID   string `json:"roleId"`
+}
+
+type LoginParam struct {
+	Username string `json:"username"`
+	Password string `json:"password"`
+}
+
+type LoginResponse struct {
+	Username string `json:"username"`
+	IsActive string `json:"isActive"`
+}
+
+type NewUserParam struct {
 	Text   string `json:"text"`
 	UserID string `json:"userId"`
-}
-
-type Todo struct {
-	ID   string `json:"id"`
-	Text string `json:"text"`
-	Done bool   `json:"done"`
-	User *User  `json:"user"`
-}
-
-type User struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
 }

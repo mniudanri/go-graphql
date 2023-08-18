@@ -85,3 +85,7 @@ models:
       - github.com/99designs/gqlgen/graphql.Int
       - github.com/99designs/gqlgen/graphql.Int64
       - github.com/99designs/gqlgen/graphql.Int32
+  User:
+    model: github.com/mniudanri/go-graphql/graph/model.User
+  Role:
+    model: github.com/mniudanri/go-graphql/graph/model.Role
