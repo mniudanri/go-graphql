@@ -1,13 +1,13 @@
 FROM golang:alpine
 
-RUN mkdir test
+RUN mkdir -p build-go-graphql && rm -rf /build-go-graphql/*
 
-ADD . /test
+ADD . /build-go-graphql
 
-WORKDIR /test
+WORKDIR /build-go-graphql
 
 RUN go build -o go-graphql .
 
 EXPOSE 8080
 
-CMD ["/test/go-graphql"]
+CMD ["/build-go-graphql/go-graphql"]
